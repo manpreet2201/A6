@@ -68,8 +68,7 @@ public class MainClass implements inventoryControl {
 
 		String q = "select UnitPrice " + "from orderdetails, orders "
 				+ "where orderdetails.orderID=orders.orderID and orderdetails.productid=" + product_id
-				+ " and orders.orderdate<=STR_TO_DATE('" + day + "," + month + "," + year + "','%d,%m,%Y')"
-				+ " order by orders.orderdate desc" + " limit 1;";
+				+ " order by orders.OrderID desc" + " limit 1;";
 
 		Connection connection = getConnection();
 		Statement s = connection.createStatement();
@@ -312,21 +311,21 @@ public class MainClass implements inventoryControl {
 
 	}
 
-//	public static void main(String args[]) throws ClassNotFoundException, SQLException, FileNotFoundException {
-//		MainClass mc = new MainClass();
-//		//mc.setup_db();
-//		try {
-//			mc.Ship_order(11070);
-//		}
-//
-//catch(Exception e) {
-//	e.printStackTrace();
-//}
-//		System.out.println(mc.Issue_reorders(2020, 04, 06));
-//		// mc.Receive_order(1);
-//		//mc.Receive_order(2);
-////	System.out.println(mc.get_price(1, 1997, 07, 24));
-//
-//	}
+	public static void main(String args[]) throws ClassNotFoundException, SQLException, FileNotFoundException {
+		MainClass mc = new MainClass();
+		//mc.setup_db();
+		try {
+			mc.Ship_order(11070);
+		}
+
+catch(Exception e) {
+	e.printStackTrace();
+}
+		System.out.println(mc.Issue_reorders(2020, 04, 06));
+		// mc.Receive_order(1);
+		//mc.Receive_order(2);
+//	System.out.println(mc.get_price(1, 1997, 07, 24));
+
+	}
 
 }
