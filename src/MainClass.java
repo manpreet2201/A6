@@ -297,7 +297,10 @@ public class MainClass implements inventoryControl {
 					+ "PurchaseOrder.OrderID=" + internal_order_reference + ";";
 			statement.execute(q);
 			
-			
+			q = "update products,PurchaseOrder,PurchaseOrderDetails " + "set UnitsOnOrder = UnitsOnOrder-OrderedUnits "
+					+ "where products.ProductId=PurchaseOrderDetails.ProductID and PurchaseOrder.OrderID=PurchaseOrderDetails.OrderID and "
+					+ "PurchaseOrder.OrderID=" + internal_order_reference + ";";
+			statement.execute(q);
 			//
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
